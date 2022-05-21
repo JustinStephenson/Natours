@@ -1,0 +1,45 @@
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
+html {
+	/* we want 10px, default browser is 16px, 10 / 16 = 62.5 */
+	/* we want 10 px so it is easy to calculate for rem */
+	font-size: 62.5%; // 1 rem = 10px, 10/16 = 62.5
+
+	@include respond($big-desktop) {
+		font-size: 75%; // 1 rem = 12px, 12/16 = 75
+	}
+
+	@include respond($tablet-landscape) {
+		font-size: 56.25%; // 1 rem = 9px, 9/16 = 56.25
+	}
+
+	@include respond($tablet-portrait) {
+		font-size: 50%; // 1 rem = 8px, 8/16 = 50
+	}
+
+	@include respond($phone) {
+		font-size: 50%; // 1 rem = 8px, 8/16 = 50
+	}
+}
+
+body {
+	/* change the box model so the borders and paddings
+    are not added alongside height and width of an element */
+	box-sizing: border-box;
+	padding: 3rem;
+
+	@include respond($tablet-portrait) {
+		padding: 0;
+	}
+
+	::selection {
+		background-color: $color-primary;
+		color: $color-white;
+	}
+}
